@@ -6,7 +6,7 @@
 #    By: eguelin <eguelin@student.42lyon.fr>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/24 18:06:37 by eguelin           #+#    #+#              #
-#    Updated: 2025/01/29 18:46:20 by eguelin          ###   ########.fr        #
+#    Updated: 2025/01/29 19:31:31 by eguelin          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,7 +22,7 @@ SRCS_DIR	= srcs/
 INCS_DIR	= includes/
 UTILS_DIR	= utils/
 PRINT_DIR	= print/
-STR_DIR		= str/
+STR_DIR		= string/
 CC			= gcc
 CFLAGS		= -Wall -Wextra -Werror
 INCS		= -I $(INCS_DIR)
@@ -81,8 +81,11 @@ PRINT_FILES	= ft_printf.c \
 
 ALL_FILES 	+= $(addprefix $(PRINT_DIR), $(PRINT_FILES))
 
-STR_FILES	= ft_strlen.c \
-			  ft_strchr.c
+STR_FILES	= ft_strchr.c \
+			  ft_strcpy.c \
+			  ft_strlcpy.c \
+			  ft_strlen.c \
+			  ft_strncpy.c \
 
 ALL_FILES 	+= $(addprefix $(STR_DIR), $(STR_FILES))
 
