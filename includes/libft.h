@@ -6,7 +6,7 @@
 /*   By: eguelin <eguelin@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 19:44:13 by eguelin           #+#    #+#             */
-/*   Updated: 2025/01/29 19:28:45 by eguelin          ###   ########.fr       */
+/*   Updated: 2025/01/29 19:38:18 by eguelin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,16 @@ char	*ft_strncpy(char *dest, const char *src, size_t n);
 
 	Returns the total length of the string it tried to create. */
 size_t	ft_strlcpy(char *dst, const char *src, size_t size);
+/*	Compares the two strings s1 and s2.
+
+	Returns an integer less than, equal to, or greater than zero if s1 is found,
+	respectively, to be less than, to match, or be greater than s2. */
+int		strcmp(const char *s1, const char *s2);
+/*	Compares at most the first n bytes of s1 and s2.
+
+	Returns an integer less than, equal to, or greater than zero if s1 is found,
+	respectively, to be less than, to match, or be greater than s2. */
+int		strncmp(const char *s1, const char *s2, size_t n);
 
 /* ************************************************************************** */
 /*                              print functions                               */

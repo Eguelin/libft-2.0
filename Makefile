@@ -6,7 +6,7 @@
 #    By: eguelin <eguelin@student.42lyon.fr>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/24 18:06:37 by eguelin           #+#    #+#              #
-#    Updated: 2025/01/29 19:31:31 by eguelin          ###   ########.fr        #
+#    Updated: 2025/01/29 19:38:38 by eguelin          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -82,10 +82,12 @@ PRINT_FILES	= ft_printf.c \
 ALL_FILES 	+= $(addprefix $(PRINT_DIR), $(PRINT_FILES))
 
 STR_FILES	= ft_strchr.c \
+			  ft_strcmp.c \
 			  ft_strcpy.c \
 			  ft_strlcpy.c \
 			  ft_strlen.c \
-			  ft_strncpy.c \
+			  ft_strncmp.c \
+			  ft_strncpy.c
 
 ALL_FILES 	+= $(addprefix $(STR_DIR), $(STR_FILES))
 
