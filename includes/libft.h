@@ -1,0 +1,56 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   libft.h                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: eguelin <eguelin@student.42lyon.fr>        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/01/20 19:44:13 by eguelin           #+#    #+#             */
+/*   Updated: 2025/01/29 18:22:39 by eguelin          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#ifndef LIBFT_H
+# define LIBFT_H
+
+# include <unistd.h>
+
+/* ************************************************************************** */
+/*                              string functions                              */
+/* ************************************************************************** */
+
+/*	Returns length of the string s. */
+size_t	ft_strlen(const char *s);
+/*	Locates the first occurrence of c (converted to a char) in the string
+	pointed to by s.
+
+	Returns a pointer to the located character, or NULL if the character does
+	not appear in the string. */
+char	*ft_strchr(const char *s, int c);
+
+/* ************************************************************************** */
+/*                              print functions                               */
+/* ************************************************************************** */
+
+/*	Prints the string in the standard output with the format specified in
+	the format string.
+
+	returns the number of characters printed or -1 if an error occurred. */
+int		ft_printf(const char *format, ...);
+/*	Prints the string in the standard output with the format specified in
+	the format string.
+
+	returns the number of characters printed or -1 if an error occurred. */
+int		ft_dprintf(int fd, const char *format, ...);
+/*	Prints the string in the standard output with the format specified in
+	the format string.
+
+	returns the number of characters printed or -1 if an error occurred. */
+int		ft_sprintf(char *str, const char *format, ...);
+/*	Prints the string in the standard output with the format specified in
+	the format string.
+
+	returns the number of characters printed or -1 if an error occurred. */
+int		ft_snprintf(char *str, size_t size, const char *format, ...);
+
+#endif
