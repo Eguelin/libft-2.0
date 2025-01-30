@@ -6,7 +6,7 @@
 #    By: eguelin <eguelin@student.42lyon.fr>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/24 18:06:37 by eguelin           #+#    #+#              #
-#    Updated: 2025/01/29 19:38:38 by eguelin          ###   ########.fr        #
+#    Updated: 2025/01/30 16:15:15 by eguelin          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,8 +29,14 @@ INCS		= -I $(INCS_DIR)
 INCS_UTILS	= $(INCS) -I $(INCS_DIR)$(UTILS_DIR)
 ARC			= ar rcs
 PRINT		= @printf
-LIB			= -L. -lft
 RM			= rm -fr
+
+# ********************************   tests   ********************************* #
+
+TESTS		= test
+TESTS_DIR	= tests/
+INCS_TESTS	= $(INCS) -I $(INCS_DIR)$(TESTS_DIR)
+LIB			= -L. -lft
 
 # **************************************************************************** #
 #                                    Colors                                    #
@@ -53,6 +59,12 @@ DEFAULT	= \033[0m
 COMP_MSG		= "$(GREEN)Compilation $(NAME) $(DEFAULT)done on $(YELLOW)$(shell date +'%Y-%m-%d %H:%M:%S')$(DEFAULT)\n"
 CLEAN_MSG		= "$(RED)Cleaning $(NAME) $(DEFAULT)done on $(YELLOW)$(shell date +'%Y-%m-%d %H:%M:%S')$(DEFAULT)\n"
 FULL_CLEAN_MSG	= "$(PURPLE)Full cleaning $(NAME) $(DEFAULT)done on $(YELLOW)$(shell date +'%Y-%m-%d %H:%M:%S')$(DEFAULT)\n"
+
+# ********************************   tests   ********************************* #
+
+COMP_TEST_MSG	= "$(GREEN)Compilation $(TESTS) $(DEFAULT)done on $(YELLOW)$(shell date +'%Y-%m-%d %H:%M:%S')$(DEFAULT)\n"
+CLEAN_TEST_MSG	= "$(RED)Cleaning $(TESTS) $(DEFAULT)done on $(YELLOW)$(shell date +'%Y-%m-%d %H:%M:%S')$(DEFAULT)\n"
+FULL_CLEAN_TEST_MSG	= "$(PURPLE)Full cleaning $(TESTS) $(DEFAULT)done on $(YELLOW)$(shell date +'%Y-%m-%d %H:%M:%S')$(DEFAULT)\n"
 
 # **************************************************************************** #
 #                                    Sources                                   #
@@ -97,6 +109,17 @@ DEP_FILES	= $(OBJS_FILES:.o=.d)
 
 OBJS_DIRS	= $(sort $(dir $(OBJS_FILES)))
 
+# ********************************   tests   ********************************* #
+
+TESTS_FILES	= test.c \
+			  test_utils.c
+
+OBJS_TESTS_FILES	= $(addprefix $(OBJS_DIR)$(TESTS_DIR), $(TESTS_FILES:.c=.o))
+
+DEP_TESTS_FILES	= $(OBJS_TESTS_FILES:.o=.d)
+
+OBJS_TESTS_DIRS	= $(sort $(dir $(OBJS_TESTS_FILES)))
+
 # **************************************************************************** #
 #                                     Rules                                    #
 # **************************************************************************** #
@@ -124,4 +147,31 @@ re: fclean all
 $(OBJS_DIRS):
 	mkdir -p $@
 
--include $(DEP_FILES)
+# ********************************   tests   ********************************* #
+
+all_$(TESTS): $(TESTS)
+
+$(TESTS): all $(OBJS_TESTS_FILES)
+	$(CC) $(CFLAGS) $(INCS_TESTS) $(OBJS_TESTS_FILES) $(LIB) -o $(TESTS)
+	$(PRINTF) $(TESTS_MSG)
+	./$(TESTS)
+
+$(OBJS_DIR)$(TESTS_DIR)%.o: $(TESTS_DIR)%.c | $(OBJS_DIR)$(TESTS_DIR)
+	$(CC) $(CFLAGS) $(INCS_TESTS) -MMD -MP -c $<  -o $@
+
+$(OBJS_DIR)$(TESTS_DIR):
+	mkdir -p $@
+
+
+clean_$(TESTS):
+	$(RM) $(OBJS_DIR)$(TESTS_DIR)
+	$(PRINTF) $(TESTS_CLEAN_MSG)
+
+fclean_$(TESTS): clean_$(TESTS)
+	$(RM) $(TESTS)
+	$(PRINTF) $(TESTS_FULL_CLEAN_MSG)
+
+re_$(TESTS): fclean all_$(TESTS)
+
+
+-include $(DEP_FILES) $(DEP_TESTS_FILES)

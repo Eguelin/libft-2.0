@@ -6,7 +6,7 @@
 /*   By: eguelin <eguelin@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 19:44:13 by eguelin           #+#    #+#             */
-/*   Updated: 2025/01/29 19:38:18 by eguelin          ###   ########.fr       */
+/*   Updated: 2025/01/30 16:23:55 by eguelin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ char	*ft_strchr(const char *s, int c);
 	enough to receive the copy.
 
 	Returns a pointer to the destination string dest. */
-char	*strcpy(char *dest, const char *src);
+char	*ft_strcpy(char *dest, const char *src);
 /*	Copies at most n bytes of the string pointed to by src, including the
 	terminating null byte ('\0'), to the buffer pointed to by dest.
 
@@ -52,12 +52,12 @@ size_t	ft_strlcpy(char *dst, const char *src, size_t size);
 
 	Returns an integer less than, equal to, or greater than zero if s1 is found,
 	respectively, to be less than, to match, or be greater than s2. */
-int		strcmp(const char *s1, const char *s2);
+int		ft_strcmp(const char *s1, const char *s2);
 /*	Compares at most the first n bytes of s1 and s2.
 
 	Returns an integer less than, equal to, or greater than zero if s1 is found,
 	respectively, to be less than, to match, or be greater than s2. */
-int		strncmp(const char *s1, const char *s2, size_t n);
+int		ft_strncmp(const char *s1, const char *s2, size_t n);
 
 /* ************************************************************************** */
 /*                              print functions                               */
