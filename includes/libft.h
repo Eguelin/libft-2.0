@@ -6,7 +6,7 @@
 /*   By: eguelin <eguelin@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 19:44:13 by eguelin           #+#    #+#             */
-/*   Updated: 2025/04/06 13:48:03 by eguelin          ###   ########.fr       */
+/*   Updated: 2025/04/07 12:31:38 by eguelin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,15 +31,21 @@ extern "C" {
 
 	Returns a pointer to the destination string dest. */
 char	*ft_strcat(char *dest, const char *src);
-
-/*	Returns length of the string s. */
-size_t	ft_strlen(const char *s);
 /*	Locates the first occurrence of c (converted to a char) in the string
 	pointed to by s.
 
 	Returns a pointer to the located character, or NULL if the character does
 	not appear in the string. */
 char	*ft_strchr(const char *s, int c);
+
+# ifdef __cplusplus
+}
+# endif
+
+
+/*	Returns length of the string s. */
+size_t	ft_strlen(const char *s);
+
 /*	Copies the string pointed to by src, including the terminating null byte
 	('\0'), to the buffer pointed to by dest.
 
@@ -97,8 +103,5 @@ int		ft_sprintf(char *str, const char *format, ...);
 	returns the number of characters printed or -1 if an error occurred. */
 int		ft_snprintf(char *str, size_t size, const char *format, ...);
 
-# ifdef __cplusplus
-}
-# endif
 
 #endif
