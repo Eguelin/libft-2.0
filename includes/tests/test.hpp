@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   test_utils.hpp                                     :+:      :+:    :+:   */
+/*   test.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: eguelin <eguelin@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/14 15:28:33 by eguelin           #+#    #+#             */
-/*   Updated: 2025/04/07 11:20:21 by eguelin          ###   ########.fr       */
+/*   Updated: 2025/04/07 12:17:09 by eguelin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,5 +36,6 @@ void	default_sigaction();
 void	run_test(const std::string& label, std::function<void()> test_func, std::function<bool()> assert_func, SegvExpectation expect_segv);
 
 void	test_strcat(std::vector<std::string> test_strings);
+void	test_strchr(std::vector<std::string> test_strings);
 
 #endif
