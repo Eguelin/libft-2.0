@@ -6,16 +6,16 @@
 /*   By: eguelin <eguelin@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/15 15:41:05 by eguelin           #+#    #+#             */
-/*   Updated: 2025/04/07 11:23:59 by eguelin          ###   ########.fr       */
+/*   Updated: 2025/04/07 15:27:09 by eguelin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "test.hpp"
 
 struct	StrcatArgs {
-	char *dest;
-	const char *src;
-	std::string expected;
+	char		*dest;
+	const char	*src;
+	std::string	expected;
 };
 
 static void	test_strcat_std(const std::vector<std::string>& test_strings);

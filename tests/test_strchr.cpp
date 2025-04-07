@@ -6,16 +6,16 @@
 /*   By: eguelin <eguelin@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/15 15:41:05 by eguelin           #+#    #+#             */
-/*   Updated: 2025/04/07 12:32:04 by eguelin          ###   ########.fr       */
+/*   Updated: 2025/04/07 15:27:02 by eguelin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "test.hpp"
 
 struct	StrchrArgs {
-	char c;
-	char *result;
-	const char *src;
+	char		c;
+	char		*result;
+	const char	*src;
 };
 
 static void	test_strchr_std(const std::vector<std::string>& test_strings);
