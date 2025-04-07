@@ -6,7 +6,7 @@
 /*   By: eguelin <eguelin@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/14 15:28:33 by eguelin           #+#    #+#             */
-/*   Updated: 2025/04/07 12:17:09 by eguelin          ###   ########.fr       */
+/*   Updated: 2025/04/07 17:39:22 by eguelin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,5 +37,6 @@ void	run_test(const std::string& label, std::function<void()> test_func, std::fu
 
 void	test_strcat(std::vector<std::string> test_strings);
 void	test_strchr(std::vector<std::string> test_strings);
+void	test_strcmp(std::vector<std::string> test_strings);
 
 #endif

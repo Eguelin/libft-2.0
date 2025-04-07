@@ -6,7 +6,7 @@
 /*   By: eguelin <eguelin@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 19:44:13 by eguelin           #+#    #+#             */
-/*   Updated: 2025/04/07 12:31:38 by eguelin          ###   ########.fr       */
+/*   Updated: 2025/04/07 17:44:44 by eguelin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,11 @@ char	*ft_strcat(char *dest, const char *src);
 	Returns a pointer to the located character, or NULL if the character does
 	not appear in the string. */
 char	*ft_strchr(const char *s, int c);
+/*	Compares the two strings s1 and s2.
+
+	Returns an integer less than, equal to, or greater than zero if s1 is found,
+	respectively, to be less than, to match, or be greater than s2. */
+int		ft_strcmp(const char *s1, const char *s2);
 
 # ifdef __cplusplus
 }
@@ -67,11 +72,6 @@ char	*ft_strncpy(char *dest, const char *src, size_t n);
 
 	Returns the total length of the string it tried to create. */
 size_t	ft_strlcpy(char *dst, const char *src, size_t size);
-/*	Compares the two strings s1 and s2.
-
-	Returns an integer less than, equal to, or greater than zero if s1 is found,
-	respectively, to be less than, to match, or be greater than s2. */
-int		ft_strcmp(const char *s1, const char *s2);
 /*	Compares at most the first n bytes of s1 and s2.
 
 	Returns an integer less than, equal to, or greater than zero if s1 is found,
