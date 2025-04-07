@@ -6,7 +6,7 @@
 #    By: eguelin <eguelin@student.42lyon.fr>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/24 18:06:37 by eguelin           #+#    #+#              #
-#    Updated: 2025/04/07 17:33:00 by eguelin          ###   ########.fr        #
+#    Updated: 2025/04/07 18:54:22 by eguelin          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -117,7 +117,8 @@ TESTS_FILES	= test.cpp \
 			  test_utils.cpp \
 			  test_strcat.cpp \
 			  test_strchr.cpp \
-			  test_strcmp.cpp
+			  test_strcmp.cpp \
+			  test_strcpy.cpp
 
 OBJS_TESTS_FILES	= $(addprefix $(OBJS_DIR)$(TESTS_DIR), $(TESTS_FILES:.cpp=.o))
 

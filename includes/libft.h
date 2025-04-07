@@ -6,7 +6,7 @@
 /*   By: eguelin <eguelin@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 19:44:13 by eguelin           #+#    #+#             */
-/*   Updated: 2025/04/07 17:44:44 by eguelin          ###   ########.fr       */
+/*   Updated: 2025/04/07 18:53:57 by eguelin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,14 @@ char	*ft_strchr(const char *s, int c);
 	Returns an integer less than, equal to, or greater than zero if s1 is found,
 	respectively, to be less than, to match, or be greater than s2. */
 int		ft_strcmp(const char *s1, const char *s2);
+/*	Copies the string pointed to by src, including the terminating null byte
+	('\0'), to the buffer pointed to by dest.
+
+	The strings may not overlap, and the destination string dest must be large
+	enough to receive the copy.
+
+	Returns a pointer to the destination string dest. */
+char	*ft_strcpy(char *dest, const char *src);
 
 # ifdef __cplusplus
 }
@@ -51,14 +59,7 @@ int		ft_strcmp(const char *s1, const char *s2);
 /*	Returns length of the string s. */
 size_t	ft_strlen(const char *s);
 
-/*	Copies the string pointed to by src, including the terminating null byte
-	('\0'), to the buffer pointed to by dest.
 
-	The strings may not overlap, and the destination string dest must be large
-	enough to receive the copy.
-
-	Returns a pointer to the destination string dest. */
-char	*ft_strcpy(char *dest, const char *src);
 /*	Copies at most n bytes of the string pointed to by src, including the
 	terminating null byte ('\0'), to the buffer pointed to by dest.
 
