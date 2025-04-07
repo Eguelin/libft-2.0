@@ -6,7 +6,7 @@
 #    By: eguelin <eguelin@student.42lyon.fr>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/24 18:06:37 by eguelin           #+#    #+#              #
-#    Updated: 2025/01/30 16:15:15 by eguelin          ###   ########.fr        #
+#    Updated: 2025/04/07 11:21:44 by eguelin          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,7 +24,8 @@ UTILS_DIR	= utils/
 PRINT_DIR	= print/
 STR_DIR		= string/
 CC			= gcc
-CFLAGS		= -Wall -Wextra -Werror
+CPP			= c++
+CFLAGS		= -Wall -Wextra -Werror -fsanitize=address -g3
 INCS		= -I $(INCS_DIR)
 INCS_UTILS	= $(INCS) -I $(INCS_DIR)$(UTILS_DIR)
 ARC			= ar rcs
@@ -93,7 +94,8 @@ PRINT_FILES	= ft_printf.c \
 
 ALL_FILES 	+= $(addprefix $(PRINT_DIR), $(PRINT_FILES))
 
-STR_FILES	= ft_strchr.c \
+STR_FILES	= ft_strcat.c \
+			  ft_strchr.c \
 			  ft_strcmp.c \
 			  ft_strcpy.c \
 			  ft_strlcpy.c \
@@ -111,10 +113,11 @@ OBJS_DIRS	= $(sort $(dir $(OBJS_FILES)))
 
 # ********************************   tests   ********************************* #
 
-TESTS_FILES	= test.c \
-			  test_utils.c
+TESTS_FILES	= test.cpp \
+			  test_utils.cpp \
+			  test_strcat.cpp \
 
-OBJS_TESTS_FILES	= $(addprefix $(OBJS_DIR)$(TESTS_DIR), $(TESTS_FILES:.c=.o))
+OBJS_TESTS_FILES	= $(addprefix $(OBJS_DIR)$(TESTS_DIR), $(TESTS_FILES:.cpp=.o))
 
 DEP_TESTS_FILES	= $(OBJS_TESTS_FILES:.o=.d)
 
@@ -152,16 +155,15 @@ $(OBJS_DIRS):
 all_$(TESTS): $(TESTS)
 
 $(TESTS): all $(OBJS_TESTS_FILES)
-	$(CC) $(CFLAGS) $(INCS_TESTS) $(OBJS_TESTS_FILES) $(LIB) -o $(TESTS)
+	$(CPP) $(CFLAGS) $(INCS_TESTS) $(OBJS_TESTS_FILES) $(LIB) -o $(TESTS)
 	$(PRINTF) $(TESTS_MSG)
 	./$(TESTS)
 
-$(OBJS_DIR)$(TESTS_DIR)%.o: $(TESTS_DIR)%.c | $(OBJS_DIR)$(TESTS_DIR)
-	$(CC) $(CFLAGS) $(INCS_TESTS) -MMD -MP -c $<  -o $@
+$(OBJS_DIR)$(TESTS_DIR)%.o: $(TESTS_DIR)%.cpp | $(OBJS_DIR)$(TESTS_DIR)
+	$(CPP) $(CFLAGS) $(INCS_TESTS) -MMD -MP -c $<  -o $@
 
 $(OBJS_DIR)$(TESTS_DIR):
 	mkdir -p $@
-
 
 clean_$(TESTS):
 	$(RM) $(OBJS_DIR)$(TESTS_DIR)

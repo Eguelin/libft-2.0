@@ -6,7 +6,7 @@
 /*   By: eguelin <eguelin@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 19:44:13 by eguelin           #+#    #+#             */
-/*   Updated: 2025/01/30 16:23:55 by eguelin          ###   ########.fr       */
+/*   Updated: 2025/04/06 13:48:03 by eguelin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,22 @@
 
 # include <unistd.h>
 
+# ifdef __cplusplus
+extern "C" {
+# endif
+
 /* ************************************************************************** */
 /*                              string functions                              */
 /* ************************************************************************** */
+
+/*	Concatenates the string pointed to by src to the end of the string pointed
+	to by dest.
+
+	The strings may not overlap, and the destination string dest must be large
+	enough to receive the copy.
+
+	Returns a pointer to the destination string dest. */
+char	*ft_strcat(char *dest, const char *src);
 
 /*	Returns length of the string s. */
 size_t	ft_strlen(const char *s);
@@ -83,5 +96,9 @@ int		ft_sprintf(char *str, const char *format, ...);
 
 	returns the number of characters printed or -1 if an error occurred. */
 int		ft_snprintf(char *str, size_t size, const char *format, ...);
+
+# ifdef __cplusplus
+}
+# endif
 
 #endif
