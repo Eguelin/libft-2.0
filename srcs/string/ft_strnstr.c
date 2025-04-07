@@ -1,26 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_sprintf.c                                       :+:      :+:    :+:   */
+/*   ft_strnstr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: eguelin <eguelin@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/22 13:38:18 by eguelin           #+#    #+#             */
-/*   Updated: 2025/04/04 11:55:26 by eguelin          ###   ########.fr       */
+/*   Created: 2025/03/05 18:48:31 by eguelin           #+#    #+#             */
+/*   Updated: 2025/03/05 19:03:45 by eguelin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "utils.h"
-#include <limits.h>
+#include "libft.h"
 
-int	ft_sprintf(char *str, const char *format, ...)
+char	*strnstr(const char *big, const char *little, size_t len)
 {
-	t_printf	pf;
+	size_t	little_len;
 
-	ft_init_pf(&pf, 1, str, ULONG_MAX);
-	va_start(pf.ap, format);
-	if (ft_print_loop(format, &pf))
-		return (-1);
-	va_end(pf.ap);
-	return (pf.ret);
+	little_len = ft_strlen(little);
+	while (*big && little_len <= len)
+	{
+		if (ft_strncmp(big, little, little_len) == 0)
+			return ((char *)big);
+		big++;
+		len--;
+	}
+	return (NULL);
 }

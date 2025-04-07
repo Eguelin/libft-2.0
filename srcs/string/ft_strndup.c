@@ -1,26 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_sprintf.c                                       :+:      :+:    :+:   */
+/*   ft_strndup.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: eguelin <eguelin@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/22 13:38:18 by eguelin           #+#    #+#             */
-/*   Updated: 2025/04/04 11:55:26 by eguelin          ###   ########.fr       */
+/*   Created: 2025/03/05 19:07:03 by eguelin           #+#    #+#             */
+/*   Updated: 2025/04/04 11:59:14 by eguelin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "utils.h"
-#include <limits.h>
+#include "libft.h"
 
-int	ft_sprintf(char *str, const char *format, ...)
+char	*strndup(const char s, size_t n)
 {
-	t_printf	pf;
+	size_t	len;
+	char	*dup;
 
-	ft_init_pf(&pf, 1, str, ULONG_MAX);
-	va_start(pf.ap, format);
-	if (ft_print_loop(format, &pf))
-		return (-1);
-	va_end(pf.ap);
-	return (pf.ret);
+	len = ft_strlen(s);
+	if (n < len)
+		len = n;
+	dup = malloc(len + 1);
+	if (!dup)
+		return (NULL);
+	ft_strncpy(dup, s, len);
+	return (dup);
 }

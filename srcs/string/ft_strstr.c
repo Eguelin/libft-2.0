@@ -1,26 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_sprintf.c                                       :+:      :+:    :+:   */
+/*   ft_strstr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: eguelin <eguelin@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/22 13:38:18 by eguelin           #+#    #+#             */
-/*   Updated: 2025/04/04 11:55:26 by eguelin          ###   ########.fr       */
+/*   Created: 2025/03/05 18:43:51 by eguelin           #+#    #+#             */
+/*   Updated: 2025/03/05 19:00:14 by eguelin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "utils.h"
-#include <limits.h>
+#include "libft.h"
 
-int	ft_sprintf(char *str, const char *format, ...)
+char	*strstr(const char *haystack, const char *needle)
 {
-	t_printf	pf;
+	size_t	needle_len;
 
-	ft_init_pf(&pf, 1, str, ULONG_MAX);
-	va_start(pf.ap, format);
-	if (ft_print_loop(format, &pf))
-		return (-1);
-	va_end(pf.ap);
-	return (pf.ret);
+	needle_len = ft_strlen(needle);
+	while (*haystack)
+	{
+		if (ft_strncmp(haystack, needle, needle_len) == 0)
+			return ((char *)haystack);
+		haystack++;
+	}
+	return (NULL);
 }

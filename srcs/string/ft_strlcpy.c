@@ -6,7 +6,7 @@
 /*   By: eguelin <eguelin@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/29 19:10:34 by eguelin           #+#    #+#             */
-/*   Updated: 2025/01/29 19:32:28 by eguelin          ###   ########.fr       */
+/*   Updated: 2025/03/05 18:40:16 by eguelin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,17 +14,18 @@
 
 size_t	ft_strlcpy(char *dst, const char *src, size_t size)
 {
-	size_t	i;
+	size_t	len;
 
-	i = 0;
+	len = 0;
 	if (!size)
-		return (0);
-	while (size - 1 > i && src[i])
+		return (ft_strlen(src));
+	size--;
+	while (size > len && src[len])
 	{
-		dst[i] = src[i];
-		i++;
+		dst[len] = src[len];
+		len++;
 	}
-	dst[i] = '\0';
-	i = ft_strlen(src);
-	return (i);
+	dst[len] = '\0';
+	len += ft_strlen(src + len);
+	return (len);
 }
