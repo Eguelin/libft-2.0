@@ -6,7 +6,7 @@
 /*   By: eguelin <eguelin@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/15 15:41:05 by eguelin           #+#    #+#             */
-/*   Updated: 2025/04/08 11:44:23 by eguelin          ###   ########.fr       */
+/*   Updated: 2025/04/08 12:03:29 by eguelin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,11 +38,7 @@ static bool assert_strcpy_result(StrcpyArgs& args) {
 }
 
 static void	test_strcpy_std(const std::vector<std::string>& test_strings) {
-	char	*dest = static_cast<char *>(malloc(100));
-	if (!dest) {
-		std::cerr << "Failed to allocate memory for dest" << std::endl;
-		return;
-	}
+	char dest[100];
 
 	memset(dest, 10, 100);
 	for (size_t i = 0; i < test_strings.size(); ++i) {
