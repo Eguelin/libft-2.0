@@ -6,7 +6,7 @@
 /*   By: eguelin <eguelin@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/15 15:41:05 by eguelin           #+#    #+#             */
-/*   Updated: 2025/04/07 18:55:02 by eguelin          ###   ########.fr       */
+/*   Updated: 2025/04/08 11:19:00 by eguelin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,9 +44,10 @@ static void	test_strcpy_std(const std::vector<std::string>& test_strings) {
 		return;
 	}
 
+	memset(dest, 10, 100);
 	for (size_t i = 0; i < test_strings.size(); ++i) {
 		StrcpyArgs args{dest, test_strings[i].c_str()};
-		run_test("ft_strcpy(\"" + test_strings[i] + "\", \"str\")",
+		run_test("ft_strcpy(dest, \"" + test_strings[i] + "\")",
 			[&]() { test_strcpy_runner(args); },
 			[&]() { return assert_strcpy_result(args); },
 			NO_SEGV);
@@ -63,7 +64,7 @@ static void	test_strcpy_null() {
 		[]() { return false; },
 		EXPECT_SEGV);
 
-	run_test("ft_strcpy(\"str\", NULL)",
+	run_test("ft_strcpy(str, NULL)",
 		[&]() { ft_strcpy(str, nullptr); },
 		[]() { return false; },
 		EXPECT_SEGV);
