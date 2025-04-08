@@ -6,7 +6,7 @@
 /*   By: eguelin <eguelin@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/15 15:41:05 by eguelin           #+#    #+#             */
-/*   Updated: 2025/04/08 12:09:26 by eguelin          ###   ########.fr       */
+/*   Updated: 2025/04/08 14:29:07 by eguelin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,8 +48,6 @@ static void	test_strcpy_std(const std::vector<std::string>& test_strings) {
 			[&]() { return assert_strcpy_result(args); },
 			NO_SEGV);
 	}
-
-	free(dst);
 }
 
 static void	test_strcpy_null() {
