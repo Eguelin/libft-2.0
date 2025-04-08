@@ -6,7 +6,7 @@
 /*   By: eguelin <eguelin@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 19:44:13 by eguelin           #+#    #+#             */
-/*   Updated: 2025/04/08 11:09:23 by eguelin          ###   ########.fr       */
+/*   Updated: 2025/04/08 14:36:20 by eguelin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,8 +56,22 @@ char	*ft_strcpy(char *dst, const char *src);
 
 	The pointer may subsequently be used as an argument to the function free(3). */
 char	*ft_strdup(const char *s);
+/*	Concatenates the string pointed to by src to the end of the string pointed
+	to by dst, up to size - 1 characters.
 
+	The strings may not overlap, and the dstination string dst must be large
+	enough to receive the copy.
 
+	Returns the total length of the string it tried to create. */
+size_t	ft_strlcat(char *dst, const char *src, size_t size);
+/*	Copies up to size - 1 characters from the string pointed to by src to the
+	string pointed to by dst, NUL-terminating the result if size is not 0.
+
+	The strings may not overlap, and the dstination string dst must be large
+	enough to receive the copy.
+
+	Returns the length of the string it tried to create. */
+size_t	ft_strlcpy(char *dst, const char *src, size_t size);
 
 /*	Returns length of the string s. */
 size_t	ft_strlen(const char *s);

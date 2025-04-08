@@ -6,7 +6,7 @@
 #    By: eguelin <eguelin@student.42lyon.fr>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/24 18:06:37 by eguelin           #+#    #+#              #
-#    Updated: 2025/04/08 11:03:20 by eguelin          ###   ########.fr        #
+#    Updated: 2025/04/08 14:36:28 by eguelin          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -99,6 +99,8 @@ STR_FILES	= ft_strcat.c \
 			  ft_strcmp.c \
 			  ft_strcpy.c \
 			  ft_strdup.c \
+			  ft_strlcat.c \
+			  ft_strlcpy.c \
 			  ft_strlen.c
 
 ALL_FILES 	+= $(addprefix $(STR_DIR), $(STR_FILES))
@@ -117,7 +119,8 @@ TESTS_FILES	= test.cpp \
 			  test_strchr.cpp \
 			  test_strcmp.cpp \
 			  test_strcpy.cpp \
-			  test_strdup.cpp
+			  test_strdup.cpp \
+			  test_strlcat.cpp
 
 OBJS_TESTS_FILES	= $(addprefix $(OBJS_DIR)$(TESTS_DIR), $(TESTS_FILES:.cpp=.o))
 

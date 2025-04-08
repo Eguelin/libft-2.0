@@ -6,7 +6,7 @@
 /*   By: eguelin <eguelin@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/15 15:41:05 by eguelin           #+#    #+#             */
-/*   Updated: 2025/04/08 10:59:01 by eguelin          ###   ########.fr       */
+/*   Updated: 2025/04/08 15:08:38 by eguelin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ int	main() {
 	test_strcmp(test_strings);
 	test_strcpy(test_strings);
 	test_strdup(test_strings);
+	test_strlcat(test_strings);
 
 	return (0);
 }
