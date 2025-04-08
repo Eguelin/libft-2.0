@@ -6,7 +6,7 @@
 /*   By: eguelin <eguelin@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 19:44:13 by eguelin           #+#    #+#             */
-/*   Updated: 2025/04/08 16:59:33 by eguelin          ###   ########.fr       */
+/*   Updated: 2025/04/08 17:49:40 by eguelin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,11 @@ size_t	ft_strlcat(char *dst, const char *src, size_t size);
 size_t	ft_strlcpy(char *dst, const char *src, size_t size);
 /*	Returns length of the string s. */
 size_t	ft_strlen(const char *s);
+/*	Compares not more than n characters of the strings s1 and s2.
+
+	Returns an integer less than, equal to, or greater than zero if s1 is found,
+	respectively, to be less than, to match, or be greater than s2. */
+int		ft_strncmp(const char *s1, const char *s2, size_t n);
 # ifdef __cplusplus
 }
 # endif
