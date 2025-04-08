@@ -6,7 +6,7 @@
 /*   By: eguelin <eguelin@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/05 19:26:11 by eguelin           #+#    #+#             */
-/*   Updated: 2025/04/04 12:02:52 by eguelin          ###   ########.fr       */
+/*   Updated: 2025/04/08 19:10:50 by eguelin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,6 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	sub = malloc(len);
 	if (!sub)
 		return (NULL);
-	ft_strncpy(sub, s, len);
-
+	ft_strlcpy(sub, s, len);
+	return (sub);
 }

@@ -6,7 +6,7 @@
 /*   By: eguelin <eguelin@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 19:44:13 by eguelin           #+#    #+#             */
-/*   Updated: 2025/04/08 17:49:40 by eguelin          ###   ########.fr       */
+/*   Updated: 2025/04/08 19:37:24 by eguelin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,10 +51,10 @@ int		ft_strcmp(const char *s1, const char *s2);
 
 	Returns a pointer to the dstination string dst. */
 char	*ft_strcpy(char *dst, const char *src);
-/*	Allocates sufficient memory for a copy of the string s, does the copy,
-	and returns a pointer to it.
+/*	Duplicates the string s.
 
-	The pointer may subsequently be used as an argument to the function free(3). */
+	Returns a pointer to the duplicated string, or NULL if the allocation fails.
+	The returned string must be freed with free(3). */
 char	*ft_strdup(const char *s);
 /*	Concatenates the string pointed to by src to the end of the string pointed
 	to by dst, up to size - 1 characters.
@@ -79,6 +79,12 @@ size_t	ft_strlen(const char *s);
 	Returns an integer less than, equal to, or greater than zero if s1 is found,
 	respectively, to be less than, to match, or be greater than s2. */
 int		ft_strncmp(const char *s1, const char *s2, size_t n);
+
+/*	Duplicates the string s, up to n characters.
+
+	Returns a pointer to the duplicated string, or NULL if the allocation fails.
+	The returned string must be freed with free(3). */
+char	*ft_strndup(const char *s, size_t n);
 # ifdef __cplusplus
 }
 # endif
