@@ -44,14 +44,16 @@ static bool assert_strlcat_result(StrlcatArgs& args) {
 static void	test_strlcat_std(const std::vector<std::string>& test_strings) {
 	char	dst[100];
 	char	dst_ref[100];
+	size_t size;
 
 	for (size_t i = 0; i < test_strings.size(); ++i) {
-		size_t size = test_strings[i].size() + 1;
+		size = test_strings[i].size() + 1;
 
 		strcpy(dst, test_strings[i].c_str());
 		strcpy(dst_ref, test_strings[i].c_str());
 		for (size_t j = 0; j < test_strings.size(); ++j) {
-			StrlcatArgs args{dst, dst_ref, test_strings[j].c_str(), test_strings[i].size() + test_strings[j].size() / 2, 0, 0};
+			StrlcatArgs args{dst, dst_ref, test_strings[j].c_str(),
+				test_strings[i].size() + test_strings[j].size() / 2, 0, 0};
 
 			dst[size] = '\0';
 			dst_ref[size] = '\0';
@@ -61,6 +63,20 @@ static void	test_strlcat_std(const std::vector<std::string>& test_strings) {
 				[&]() { return assert_strlcat_result(args); },
 				NO_SEGV);
 		}
+	}
+
+	strcpy(dst, "Hello ");
+	strcpy(dst_ref, "Hello ");
+	for (size_t i = 0; i < 16; ++i) {
+		StrlcatArgs args{dst, dst_ref, "word!", i, 0, 0};
+
+		dst[6] = '\0';
+		dst_ref[6] = '\0';
+		args.result_ref = strlcat(args.dst_ref, args.src, args.dst_size);
+		run_test("ft_strlcat(\"Hello \", \"word!\", " + std::to_string(i) + ")",
+			[&]() { test_strlcat_runner(args); },
+			[&]() { return assert_strlcat_result(args); },
+			NO_SEGV);
 	}
 }
 
