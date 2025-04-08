@@ -6,7 +6,7 @@
 /*   By: eguelin <eguelin@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/15 15:41:05 by eguelin           #+#    #+#             */
-/*   Updated: 2025/04/08 12:03:40 by eguelin          ###   ########.fr       */
+/*   Updated: 2025/04/08 12:05:28 by eguelin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ static bool assert_strcat_result(StrcatArgs& args) {
 }
 
 static void	test_strcat_std(const std::vector<std::string>& test_strings) {
-	char dest[100];
+	char	dest[100];
 
 	memset(dest, 0, sizeof(dest));
 	for (size_t i = 0; i < test_strings.size(); ++i) {
