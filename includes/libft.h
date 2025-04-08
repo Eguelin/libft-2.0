@@ -25,13 +25,13 @@ extern "C" {
 /* ************************************************************************** */
 
 /*	Concatenates the string pointed to by src to the end of the string pointed
-	to by dest.
+	to by dst.
 
-	The strings may not overlap, and the destination string dest must be large
+	The strings may not overlap, and the dstination string dst must be large
 	enough to receive the copy.
 
-	Returns a pointer to the destination string dest. */
-char	*ft_strcat(char *dest, const char *src);
+	Returns a pointer to the dstination string dst. */
+char	*ft_strcat(char *dst, const char *src);
 /*	Locates the first occurrence of c (converted to a char) in the string
 	pointed to by s.
 
@@ -44,13 +44,13 @@ char	*ft_strchr(const char *s, int c);
 	respectively, to be less than, to match, or be greater than s2. */
 int		ft_strcmp(const char *s1, const char *s2);
 /*	Copies the string pointed to by src, including the terminating null byte
-	('\0'), to the buffer pointed to by dest.
+	('\0'), to the buffer pointed to by dst.
 
-	The strings may not overlap, and the destination string dest must be large
+	The strings may not overlap, and the dstination string dst must be large
 	enough to receive the copy.
 
-	Returns a pointer to the destination string dest. */
-char	*ft_strcpy(char *dest, const char *src);
+	Returns a pointer to the dstination string dst. */
+char	*ft_strcpy(char *dst, const char *src);
 /*	Allocates sufficient memory for a copy of the string s, does the copy,
 	and returns a pointer to it.
 

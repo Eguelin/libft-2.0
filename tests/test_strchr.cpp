@@ -6,7 +6,7 @@
 /*   By: eguelin <eguelin@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/15 15:41:05 by eguelin           #+#    #+#             */
-/*   Updated: 2025/04/07 15:27:02 by eguelin          ###   ########.fr       */
+/*   Updated: 2025/04/08 12:09:26 by eguelin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,7 @@ static void	test_strchr_big() {
 	memset(src, 'c', BIG_SIZE - 1);
 	src[BIG_SIZE - 2] = 'd';
 	StrchrArgs args{'c', NULL, src};
-	run_test("ft_strchr(dest[BIG_SIZE], 'd')",
+	run_test("ft_strchr(dst[BIG_SIZE], 'd')",
 		[&]() { test_strchr_runner(args); },
 		[&]() { return assert_strchr_result(args); },
 		NO_SEGV);
