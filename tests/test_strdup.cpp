@@ -6,7 +6,7 @@
 /*   By: eguelin <eguelin@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/15 15:41:05 by eguelin           #+#    #+#             */
-/*   Updated: 2025/04/08 11:13:59 by eguelin          ###   ########.fr       */
+/*   Updated: 2025/04/08 11:43:00 by eguelin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ static void	test_strdup_runner(StrdupArgs& args) {
 }
 
 static bool assert_strdup_result(StrdupArgs& args) {
-	return (args.result != nullptr && args.src != nullptr && strcmp(args.result, args.src) == 0);
+	return (args.result != nullptr && args.src != nullptr && args.result != args.src && strcmp(args.result, args.src) == 0);
 }
 
 static void	test_strdup_std(const std::vector<std::string>& test_strings) {
