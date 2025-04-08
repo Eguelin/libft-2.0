@@ -6,7 +6,7 @@
 /*   By: eguelin <eguelin@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/14 15:28:33 by eguelin           #+#    #+#             */
-/*   Updated: 2025/04/08 16:59:44 by eguelin          ###   ########.fr       */
+/*   Updated: 2025/04/08 17:27:13 by eguelin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,5 +42,6 @@ void	test_strcpy(std::vector<std::string> test_strings);
 void	test_strdup(std::vector<std::string> test_strings);
 void	test_strlcat(std::vector<std::string> test_strings);
 void	test_strlcpy(std::vector<std::string> test_strings);
+void	test_strlen(std::vector<std::string> test_strings);
 
 #endif
