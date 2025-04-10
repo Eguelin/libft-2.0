@@ -6,7 +6,7 @@
 /*   By: eguelin <eguelin@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 19:44:13 by eguelin           #+#    #+#             */
-/*   Updated: 2025/04/08 19:37:24 by eguelin          ###   ########.fr       */
+/*   Updated: 2025/04/09 11:19:46 by eguelin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,6 +85,13 @@ int		ft_strncmp(const char *s1, const char *s2, size_t n);
 	Returns a pointer to the duplicated string, or NULL if the allocation fails.
 	The returned string must be freed with free(3). */
 char	*ft_strndup(const char *s, size_t n);
+/*	Locates the first occurrence of the null-terminated string little in the
+	string big, where not more than n characters are searched.
+
+	Returns a pointer to the beginning of the located substring, or NULL if the
+	substring is not found. */
+char	*ft_strnstr(const char *big, const char *little, size_t len);
+
 # ifdef __cplusplus
 }
 # endif
