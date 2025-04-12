@@ -6,7 +6,7 @@
 /*   By: eguelin <eguelin@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/21 13:08:02 by eguelin           #+#    #+#             */
-/*   Updated: 2025/01/23 14:09:41 by eguelin          ###   ########.fr       */
+/*   Updated: 2025/04/11 18:40:43 by eguelin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,16 +20,16 @@ void	ft_put_str_buff(t_printf *pf)
 
 	buff = &pf->buff;
 	arg = &pf->arg;
-	str = (char *)arg->arg;
+	str = (char *)arg->value;
 	if (str == NULL)
 		str = "(null)";
-	while (*str != 0 && buff->i < buff->size)
+	while (*str != 0 && buff->i < PF_BUFF_SIZE)
 	{
-		buff->buff[buff->i] = *str;
+		buff->str[buff->i] = *str;
 		buff->i++;
 		str++;
-		if (pf->ft_write_pf && buff->i >= buff->size)
-			if (pf->ft_write_pf(pf) == -1)
+		if (pf->flush && buff->i >= PF_BUFF_SIZE)
+			if (pf->flush(pf) == -1)
 				return ;
 	}
 	return ;

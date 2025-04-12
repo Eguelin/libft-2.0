@@ -6,7 +6,7 @@
 /*   By: eguelin <eguelin@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/22 13:38:18 by eguelin           #+#    #+#             */
-/*   Updated: 2025/01/23 14:09:41 by eguelin          ###   ########.fr       */
+/*   Updated: 2025/04/12 14:37:49 by eguelin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,16 +14,17 @@
 
 int	ft_dprintf(int fd, const char *format, ...)
 {
+	va_list		ap;
 	t_printf	pf;
-	char		pf_buff[PRINTF_BUFF_SIZE];
+	t_format	ft;
 
-	ft_init_pf(&pf, fd, pf_buff, PRINTF_BUFF_SIZE);
-	pf.ft_write_pf = &ft_write_pf;
-	va_start(pf.ap, format);
-	if (ft_print_loop(format, &pf))
-		return (-1);
-	if (ft_write_pf(&pf) == -1)
-		return (-1);
-	va_end(pf.ap);
+	ft_init_t_printf(&pf, fd, &ft_write_pf, NULL);
+	ft_init_t_format(&ft, format);
+	va_start(ap, format);
+	if (ft_print_loop(&ft, &pf, &ap))
+		pf.ret = -1;
+	if (pf.ret != -1 && pf.flush(&pf) == -1)
+		pf.ret = -1;
+	va_end(ap);
 	return (pf.ret);
 }

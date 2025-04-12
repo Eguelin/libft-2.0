@@ -6,7 +6,7 @@
 /*   By: eguelin <eguelin@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/21 11:15:04 by eguelin           #+#    #+#             */
-/*   Updated: 2025/01/29 18:36:55 by eguelin          ###   ########.fr       */
+/*   Updated: 2025/04/12 16:15:08 by eguelin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,17 +25,17 @@ void	ft_put_ulongb_buff(t_printf *pf, const char *base)
 
 	buff = &pf->buff;
 	arg = &pf->arg;
-	nbr = (unsigned long)arg->arg;
+	nbr = (unsigned long)arg->value;
 	b_size = ft_strlen(base);
 	div = set_div(nbr, b_size);
-	while (div > 0 && buff->i < buff->size)
+	while (div > 0 && buff->i < PF_BUFF_SIZE)
 	{
-		buff->buff[buff->i] = base[nbr / div];
+		buff->str[buff->i] = base[nbr / div];
 		nbr %= div;
 		div /= b_size;
 		buff->i++;
-		if (pf->ft_write_pf && buff->i >= buff->size)
-			if (pf->ft_write_pf(pf) == -1)
+		if (pf->flush && buff->i >= PF_BUFF_SIZE)
+			if (pf->flush(pf) == -1)
 				return ;
 	}
 	return ;

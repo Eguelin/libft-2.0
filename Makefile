@@ -6,7 +6,7 @@
 #    By: eguelin <eguelin@student.42lyon.fr>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/24 18:06:37 by eguelin           #+#    #+#              #
-#    Updated: 2025/04/09 11:31:47 by eguelin          ###   ########.fr        #
+#    Updated: 2025/04/12 17:09:01 by eguelin          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -71,7 +71,14 @@ FULL_CLEAN_TEST_MSG	= "$(PURPLE)Full cleaning $(TESTS) $(DEFAULT)done on $(YELLO
 #                                    Sources                                   #
 # **************************************************************************** #
 
-UTILS_FILES	= ft_put_arg_buff.c \
+UTILS_FILES	= ft_flush_buff.c \
+			  ft_getarg.c \
+			  ft_gettype.c \
+			  ft_init_t_format.c \
+			  ft_init_t_printf.c \
+			  ft_init_t_string.c \
+			  ft_print_loop.c \
+			  ft_put_arg_buff.c \
 			  ft_put_char_buff.c \
 			  ft_put_hex_buff.c \
 			  ft_put_hexup_buff.c \
@@ -80,21 +87,19 @@ UTILS_FILES	= ft_put_arg_buff.c \
 			  ft_put_str_buff.c \
 			  ft_put_ulong_buff.c \
 			  ft_put_ulongb_buff.c \
-			  ft_getarg.c \
-			  ft_init_pf.c \
-			  ft_write_pf.c \
-			  ft_print_loop.c
+			  ft_write_pf.c
 
 ALL_FILES	= $(addprefix $(UTILS_DIR), $(UTILS_FILES))
 
-PRINT_FILES	= ft_printf.c \
-			  ft_dprintf.c \
-			  ft_sprintf.c \
-			  ft_snprintf.c
+PRINT_FILES	= ft_dprintf.c \
+			  ft_printf.c \
+			  ft_snprintf.c \
+			  ft_sprintf.c
 
 ALL_FILES 	+= $(addprefix $(PRINT_DIR), $(PRINT_FILES))
 
-STR_FILES	= ft_strcat.c \
+STR_FILES	= ft_bzero.c \
+			  ft_strcat.c \
 			  ft_strchr.c \
 			  ft_strcmp.c \
 			  ft_strcpy.c \

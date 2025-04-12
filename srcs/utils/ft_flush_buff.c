@@ -1,29 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_put_char_buff.c                                 :+:      :+:    :+:   */
+/*   ft_flush_buff.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: eguelin <eguelin@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/22 17:25:34 by eguelin           #+#    #+#             */
-/*   Updated: 2025/04/11 18:40:13 by eguelin          ###   ########.fr       */
+/*   Created: 2025/01/21 13:08:02 by eguelin           #+#    #+#             */
+/*   Updated: 2025/04/12 16:26:16 by eguelin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "utils.h"
+#include "libft.h"
 
-void	ft_put_char_buff(t_printf *pf)
+int	ft_flush_buff(t_printf *pf)
 {
-	t_arg	*arg;
-	t_buff	*buff;
+	size_t	len;
 
-	buff = &pf->buff;
-	arg = &pf->arg;
-	if (buff->i >= PF_BUFF_SIZE)
-		return ;
-	buff->str[buff->i] = (char)(long)arg->value;
-	buff->i++;
-	if (pf->flush && buff->i >= PF_BUFF_SIZE)
-		pf->flush(pf);
-	return ;
+	if (pf->t_str->size - pf->t_str->i > pf->buff.i)
+		len = pf->buff.i + 1;
+	else
+		len = pf->t_str->size - pf->t_str->i;
+	ft_strlcpy(pf->t_str->str + pf->t_str->i, pf->buff.str, len);
+	pf->t_str->i += len;
+	if (pf->ret != -1)
+		pf->ret += pf->buff.i;
+	return (0);
 }

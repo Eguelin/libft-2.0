@@ -6,7 +6,7 @@
 /*   By: eguelin <eguelin@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/21 11:14:58 by eguelin           #+#    #+#             */
-/*   Updated: 2025/01/23 14:09:41 by eguelin          ###   ########.fr       */
+/*   Updated: 2025/04/11 18:40:34 by eguelin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,14 +19,14 @@ void	ft_put_long_buff(t_printf *pf)
 
 	buff = &pf->buff;
 	arg = &pf->arg;
-	if ((long)arg->arg < 0)
+	if ((long)arg->value < 0)
 	{
-		buff->buff[buff->i] = '-';
-		arg->arg = (void *)(-(long)(arg->arg));
+		buff->str[buff->i] = '-';
+		arg->value = (void *)(-(long)(arg->value));
 		buff->i++;
 	}
-	if (pf->ft_write_pf && buff->i >= buff->size)
-		pf->ft_write_pf(pf);
+	if (pf->flush && buff->i >= PF_BUFF_SIZE)
+		pf->flush(pf);
 	ft_put_ulong_buff(pf);
 	return ;
 }

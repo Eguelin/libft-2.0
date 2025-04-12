@@ -6,21 +6,26 @@
 /*   By: eguelin <eguelin@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/22 13:38:18 by eguelin           #+#    #+#             */
-/*   Updated: 2025/04/04 11:55:26 by eguelin          ###   ########.fr       */
+/*   Updated: 2025/04/12 16:21:03 by eguelin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "utils.h"
-#include <limits.h>
 
 int	ft_sprintf(char *str, const char *format, ...)
 {
+	va_list		ap;
 	t_printf	pf;
+	t_format	ft;
+	t_string	t_str;
 
-	ft_init_pf(&pf, 1, str, ULONG_MAX);
-	va_start(pf.ap, format);
-	if (ft_print_loop(format, &pf))
-		return (-1);
-	va_end(pf.ap);
+	ft_init_t_string(&t_str, str, ULONG_MAX);
+	ft_init_t_printf(&pf, -1, &ft_flush_buff, &t_str);
+	ft_init_t_format(&ft, format);
+	va_start(ap, format);
+	if (ft_print_loop(&ft, &pf, &ap))
+		pf.ret = -1;
+	pf.flush(&pf);
+	va_end(ap);
 	return (pf.ret);
 }

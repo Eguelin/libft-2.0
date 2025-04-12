@@ -1,29 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_put_char_buff.c                                 :+:      :+:    :+:   */
+/*   ft_init_t_string.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: eguelin <eguelin@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/22 17:25:34 by eguelin           #+#    #+#             */
-/*   Updated: 2025/04/11 18:40:13 by eguelin          ###   ########.fr       */
+/*   Created: 2025/04/11 18:27:27 by eguelin           #+#    #+#             */
+/*   Updated: 2025/04/11 19:25:49 by eguelin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "utils.h"
 
-void	ft_put_char_buff(t_printf *pf)
+void	ft_init_t_string(t_string *t_str, char *str, size_t size)
 {
-	t_arg	*arg;
-	t_buff	*buff;
-
-	buff = &pf->buff;
-	arg = &pf->arg;
-	if (buff->i >= PF_BUFF_SIZE)
-		return ;
-	buff->str[buff->i] = (char)(long)arg->value;
-	buff->i++;
-	if (pf->flush && buff->i >= PF_BUFF_SIZE)
-		pf->flush(pf);
-	return ;
+	t_str->str = str;
+	t_str->size = size;
+	t_str->i = 0;
 }

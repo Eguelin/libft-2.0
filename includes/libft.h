@@ -6,7 +6,7 @@
 /*   By: eguelin <eguelin@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 19:44:13 by eguelin           #+#    #+#             */
-/*   Updated: 2025/04/09 11:19:46 by eguelin          ###   ########.fr       */
+/*   Updated: 2025/04/12 17:02:23 by eguelin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,14 +16,38 @@
 # include <unistd.h>
 # include <stdlib.h>
 
-# ifdef __cplusplus
-extern "C" {
-# endif
+/* ************************************************************************** */
+/*                              print functions                               */
+/* ************************************************************************** */
+
+/*	Writes the string s to the file descriptor fd.
+
+	Returns the number of characters written. (Excluding the null byte used to
+	terminate output to strings). */
+int		ft_dprintf(int fd, const char *format, ...);
+/*	Write formatted output to stdout.
+
+	Returns the number of characters printed (excluding the null byte used to
+	terminate output to strings). */
+int		ft_printf(const char *format, ...);
+/*	Write formatted output to the string str.
+
+	Returns the number of characters printed (excluding the null byte used to
+	terminate output to strings). */
+int		ft_snprintf(char *str, size_t size, const char *format, ...);
+/*	Write formatted output to the string str.
+
+	Returns the number of characters printed (excluding the null byte used to
+	terminate output to strings). */
+int		ft_sprintf(char *str, const char *format, ...);
 
 /* ************************************************************************** */
 /*                              string functions                              */
 /* ************************************************************************** */
 
+/*	Initializes the first n bytes of the block of memory pointed by s to
+	zero. */
+void	ft_bzero(void *s, size_t n);
 /*	Concatenates the string pointed to by src to the end of the string pointed
 	to by dst.
 
@@ -91,9 +115,5 @@ char	*ft_strndup(const char *s, size_t n);
 	Returns a pointer to the beginning of the located substring, or NULL if the
 	substring is not found. */
 char	*ft_strnstr(const char *big, const char *little, size_t len);
-
-# ifdef __cplusplus
-}
-# endif
 
 #endif
