@@ -6,7 +6,7 @@
 /*   By: eguelin <eguelin@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/14 15:28:33 by eguelin           #+#    #+#             */
-/*   Updated: 2025/04/09 11:51:31 by eguelin          ###   ########.fr       */
+/*   Updated: 2025/04/13 17:48:17 by eguelin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,9 @@
 #include <csignal>
 #include <vector>
 #include <setjmp.h>
-#include "libft.h"
+extern "C" {
+	#include "libft.h"
+}
 
 #define BIG_SIZE static_cast<size_t>(INT_MAX) + 100
 
