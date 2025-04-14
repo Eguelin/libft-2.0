@@ -6,7 +6,7 @@
 /*   By: eguelin <eguelin@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/14 15:27:51 by eguelin           #+#    #+#             */
-/*   Updated: 2025/04/07 11:24:12 by eguelin          ###   ########.fr       */
+/*   Updated: 2025/04/14 12:15:20 by eguelin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,4 +52,24 @@ void	run_test(const std::string& label,
 	}
 	std::cout << label << std::endl;
 	default_sigaction();
+}
+
+std::vector<std::string> gen_substrings(const std::vector<std::string> &test_strings) {
+	std::vector<std::string>	substrings;
+	size_t						start = 0;
+	size_t 						size = 0;
+	std::string					substring;
+
+	srand(4343);
+	for (size_t i = 0; i < test_strings.size(); ++i) {
+		if (test_strings[i].size() > 0) {
+			start = rand() % test_strings[i].size();
+			size = rand() % (test_strings[i].size() - start + 1);
+			substring = test_strings[i].substr(start, size);
+		}
+		else
+			substring = test_strings[i];
+		substrings.push_back(substring);
+	}
+	return substrings;
 }

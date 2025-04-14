@@ -6,7 +6,7 @@
 /*   By: eguelin <eguelin@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/14 15:28:33 by eguelin           #+#    #+#             */
-/*   Updated: 2025/04/14 11:03:54 by eguelin          ###   ########.fr       */
+/*   Updated: 2025/04/14 12:12:26 by eguelin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ extern sigjmp_buf	env;
 void	catch_segfault();
 void	default_sigaction();
 void	run_test(const std::string& label, std::function<void()> test_func, std::function<bool()> assert_func, SegvExpectation expect_segv);
+std::vector<std::string> gen_substrings(const std::vector<std::string> &test_strings);
 
 void	test_str(bool bigstr, const std::vector<std::string> &functests);
 void	test_strcat(const std::vector<std::string> &test_strings, bool bigstr);

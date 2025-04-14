@@ -6,7 +6,7 @@
 /*   By: eguelin <eguelin@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/15 15:41:05 by eguelin           #+#    #+#             */
-/*   Updated: 2025/04/14 10:40:29 by eguelin          ###   ########.fr       */
+/*   Updated: 2025/04/14 12:11:40 by eguelin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,14 +49,7 @@ static bool assert_strnstr_result(StrnstrArgs &args) {
 }
 
 static void	test_strnstr_std(const std::vector<std::string> &test_strings) {
-	std::vector<std::string> test_substrings = {
-		", Wor",
-		"sit",
-		"t",
-		"3 = 9",
-		"\211\212",
-		""
-	};
+	std::vector<std::string> test_substrings = gen_substrings(test_strings);
 
 	for (size_t i = 0; i < test_strings.size(); ++i) {
 		StrnstrArgs args{test_strings[i].c_str(), test_substrings[i].c_str(), test_strings[i].size(), nullptr};
