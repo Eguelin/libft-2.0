@@ -6,22 +6,17 @@
 /*   By: eguelin <eguelin@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/05 18:43:51 by eguelin           #+#    #+#             */
-/*   Updated: 2025/04/09 11:48:01 by eguelin          ###   ########.fr       */
+/*   Updated: 2025/04/14 18:11:49 by eguelin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include "limits.h"
 
 char	*ft_strstr(const char *haystack, const char *needle)
 {
-	size_t	needle_len;
+	char	*p;
 
-	needle_len = ft_strlen(needle);
-	while (*haystack)
-	{
-		if (ft_strncmp(haystack, needle, needle_len) == 0)
-			return ((char *)haystack);
-		haystack++;
-	}
-	return (NULL);
+	p = ft_strnstr(haystack, needle, LONG_MAX);
+	return (p);
 }

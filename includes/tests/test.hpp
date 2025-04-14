@@ -6,7 +6,7 @@
 /*   By: eguelin <eguelin@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/14 15:28:33 by eguelin           #+#    #+#             */
-/*   Updated: 2025/04/14 17:27:59 by eguelin          ###   ########.fr       */
+/*   Updated: 2025/04/14 17:45:02 by eguelin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,5 +52,6 @@ void	test_strncmp(const std::vector<std::string> &test_strings, bool bigstr);
 void	test_strndup(const std::vector<std::string> &test_strings, bool bigstr);
 void	test_strnstr(const std::vector<std::string> &test_strings, bool bigstr);
 void	test_strrchr(const std::vector<std::string> &test_strings, bool bigstr);
+void	test_strstr(const std::vector<std::string> &test_strings, bool bigstr);
 
 #endif
