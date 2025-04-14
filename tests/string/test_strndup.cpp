@@ -18,19 +18,20 @@ struct	StrndupArgs {
 	size_t		n;
 };
 
-static void	test_strndup_std(const std::vector<std::string>& test_strings);
+static void	test_strndup_std(const std::vector<std::string> &test_strings);
 static void	test_strndup_null();
 static void	test_strndup_big();
 
-void	test_strndup(std::vector<std::string> test_strings) {
+void	test_strndup(const std::vector<std::string> &test_strings, bool bigstr) {
 	std::cout << "\033[1;34m" << "ft_strndup" << "\033[0m" << std::endl;
 	std::cout << "======================" << std::endl;
 	test_strndup_std(test_strings);
 	test_strndup_null();
-	test_strndup_big();
+	if (bigstr)
+		test_strndup_big();
 }
 
-static void	test_strndup_runner(StrndupArgs& args) {
+static void	test_strndup_runner(StrndupArgs &args) {
 	args.result = ft_strndup(args.src, args.n);
 	if (args.result == nullptr) {
 		std::cerr << "Failed to allocate memory for result" << std::endl;
@@ -38,11 +39,11 @@ static void	test_strndup_runner(StrndupArgs& args) {
 	}
 }
 
-static bool assert_strndup_result(StrndupArgs& args) {
+static bool assert_strndup_result(StrndupArgs &args) {
 	return (args.result != nullptr && args.src != nullptr && args.result != args.src && strncmp(args.result, args.src, args.n) == 0);
 }
 
-static void	test_strndup_std(const std::vector<std::string>& test_strings) {
+static void	test_strndup_std(const std::vector<std::string> &test_strings) {
 	for (size_t i = 0; i < test_strings.size(); ++i) {
 		StrndupArgs args{nullptr, test_strings[i].c_str(), test_strings[i].size()};
 		run_test("ft_strndup(\"" + test_strings[i] + "\", " + std::to_string(args.n) + ")",

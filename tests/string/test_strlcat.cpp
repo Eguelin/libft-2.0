@@ -21,27 +21,28 @@ struct	StrlcatArgs {
 	size_t		result_ref;
 };
 
-static void	test_strlcat_std(const std::vector<std::string>& test_strings);
+static void	test_strlcat_std(const std::vector<std::string> &test_strings);
 static void	test_strlcat_null();
 static void	test_strlcat_big();
 
-void	test_strlcat(std::vector<std::string> test_strings) {
+void	test_strlcat(const std::vector<std::string> &test_strings, bool bigstr) {
 	std::cout << "\033[1;34m" << "ft_strlcat" << "\033[0m" << std::endl;
 	std::cout << "======================" << std::endl;
 	test_strlcat_std(test_strings);
 	test_strlcat_null();
-	test_strlcat_big();
+	if (bigstr)
+		test_strlcat_big();
 }
 
-static void	test_strlcat_runner(StrlcatArgs& args) {
+static void	test_strlcat_runner(StrlcatArgs &args) {
 	args.result = ft_strlcat(args.dst, args.src, args.dst_size);
 }
 
-static bool assert_strlcat_result(StrlcatArgs& args) {
+static bool assert_strlcat_result(StrlcatArgs &args) {
 	return (args.result == args.result_ref && strcmp(args.dst, args.dst_ref) == 0);
 }
 
-static void	test_strlcat_std(const std::vector<std::string>& test_strings) {
+static void	test_strlcat_std(const std::vector<std::string> &test_strings) {
 	char	dst[100];
 	char	dst_ref[100];
 	size_t size;

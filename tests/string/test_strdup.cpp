@@ -6,7 +6,7 @@
 /*   By: eguelin <eguelin@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/15 15:41:05 by eguelin           #+#    #+#             */
-/*   Updated: 2025/04/08 11:43:00 by eguelin          ###   ########.fr       */
+/*   Updated: 2025/04/14 10:38:43 by eguelin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,19 +17,20 @@ struct	StrdupArgs {
 	const char	*src;
 };
 
-static void	test_strdup_std(const std::vector<std::string>& test_strings);
+static void	test_strdup_std(const std::vector<std::string> &test_strings);
 static void	test_strdup_null();
 static void	test_strdup_big();
 
-void	test_strdup(std::vector<std::string> test_strings) {
+void	test_strdup(const std::vector<std::string> &test_strings, bool bigstr) {
 	std::cout << "\033[1;34m" << "ft_strdup" << "\033[0m" << std::endl;
 	std::cout << "======================" << std::endl;
 	test_strdup_std(test_strings);
 	test_strdup_null();
-	test_strdup_big();
+	if (bigstr)
+		test_strdup_big();
 }
 
-static void	test_strdup_runner(StrdupArgs& args) {
+static void	test_strdup_runner(StrdupArgs &args) {
 	args.result = ft_strdup(args.src);
 	if (args.result == nullptr) {
 		std::cerr << "Failed to allocate memory for result" << std::endl;
@@ -37,11 +38,11 @@ static void	test_strdup_runner(StrdupArgs& args) {
 	}
 }
 
-static bool assert_strdup_result(StrdupArgs& args) {
+static bool assert_strdup_result(StrdupArgs &args) {
 	return (args.result != nullptr && args.src != nullptr && args.result != args.src && strcmp(args.result, args.src) == 0);
 }
 
-static void	test_strdup_std(const std::vector<std::string>& test_strings) {
+static void	test_strdup_std(const std::vector<std::string> &test_strings) {
 	for (size_t i = 0; i < test_strings.size(); ++i) {
 		StrdupArgs args{nullptr, test_strings[i].c_str()};
 		run_test("ft_strdup(\"" + test_strings[i] + "\")",

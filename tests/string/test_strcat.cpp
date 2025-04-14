@@ -6,7 +6,7 @@
 /*   By: eguelin <eguelin@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/15 15:41:05 by eguelin           #+#    #+#             */
-/*   Updated: 2025/04/08 12:09:26 by eguelin          ###   ########.fr       */
+/*   Updated: 2025/04/14 10:37:53 by eguelin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,27 +18,28 @@ struct	StrcatArgs {
 	std::string	expected;
 };
 
-static void	test_strcat_std(const std::vector<std::string>& test_strings);
+static void	test_strcat_std(const std::vector<std::string> &test_strings);
 static void	test_strcat_null();
 static void	test_strcat_big();
 
-void	test_strcat(std::vector<std::string> test_strings) {
+void	test_strcat(const std::vector<std::string> &test_strings, bool bigstr) {
 	std::cout << "\033[1;34m" << "ft_strcat" << "\033[0m" << std::endl;
 	std::cout << "======================" << std::endl;
 	test_strcat_std(test_strings);
 	test_strcat_null();
-	test_strcat_big();
+	if (bigstr)
+		test_strcat_big();
 }
 
-static void	test_strcat_runner(StrcatArgs& args) {
+static void	test_strcat_runner(StrcatArgs &args) {
 	args.dst = ft_strcat(args.dst, args.src);
 }
 
-static bool assert_strcat_result(StrcatArgs& args) {
+static bool assert_strcat_result(StrcatArgs &args) {
 	return args.dst && args.expected == args.dst;
 }
 
-static void	test_strcat_std(const std::vector<std::string>& test_strings) {
+static void	test_strcat_std(const std::vector<std::string> &test_strings) {
 	char	dst[100];
 
 	memset(dst, 0, sizeof(dst));

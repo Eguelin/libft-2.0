@@ -6,7 +6,7 @@
 /*   By: eguelin <eguelin@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/15 15:41:05 by eguelin           #+#    #+#             */
-/*   Updated: 2025/04/08 14:29:07 by eguelin          ###   ########.fr       */
+/*   Updated: 2025/04/14 10:38:33 by eguelin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,27 +17,28 @@ struct	StrcpyArgs {
 	const char	*src;
 };
 
-static void	test_strcpy_std(const std::vector<std::string>& test_strings);
+static void	test_strcpy_std(const std::vector<std::string> &test_strings);
 static void	test_strcpy_null();
 static void	test_strcpy_big();
 
-void	test_strcpy(std::vector<std::string> test_strings) {
+void	test_strcpy(const std::vector<std::string> &test_strings, bool bigstr) {
 	std::cout << "\033[1;34m" << "ft_strcpy" << "\033[0m" << std::endl;
 	std::cout << "======================" << std::endl;
 	test_strcpy_std(test_strings);
 	test_strcpy_null();
-	test_strcpy_big();
+	if (bigstr)
+		test_strcpy_big();
 }
 
-static void	test_strcpy_runner(StrcpyArgs& args) {
+static void	test_strcpy_runner(StrcpyArgs &args) {
 	args.dst = ft_strcpy(args.dst, args.src);
 }
 
-static bool assert_strcpy_result(StrcpyArgs& args) {
+static bool assert_strcpy_result(StrcpyArgs &args) {
 	return (args.dst != nullptr && args.src != nullptr && args.dst != args.src && strcmp(args.dst, args.src) == 0);
 }
 
-static void	test_strcpy_std(const std::vector<std::string>& test_strings) {
+static void	test_strcpy_std(const std::vector<std::string> &test_strings) {
 	char	dst[100];
 
 	memset(dst, 10, 100);

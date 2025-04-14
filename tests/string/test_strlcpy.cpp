@@ -21,27 +21,28 @@ struct	StrlcpyArgs {
 	size_t		result_ref;
 };
 
-static void	test_strlcpy_std(const std::vector<std::string>& test_strings);
+static void	test_strlcpy_std(const std::vector<std::string> &test_strings);
 static void	test_strlcpy_null();
 static void	test_strlcpy_big();
 
-void	test_strlcpy(std::vector<std::string> test_strings) {
+void	test_strlcpy(const std::vector<std::string> &test_strings, bool bigstr) {
 	std::cout << "\033[1;34m" << "ft_strlcpy" << "\033[0m" << std::endl;
 	std::cout << "======================" << std::endl;
 	test_strlcpy_std(test_strings);
 	test_strlcpy_null();
-	test_strlcpy_big();
+	if (bigstr)
+		test_strlcpy_big();
 }
 
-static void	test_strlcpy_runner(StrlcpyArgs& args) {
+static void	test_strlcpy_runner(StrlcpyArgs &args) {
 	args.result = ft_strlcpy(args.dst, args.src, args.dst_size);
 }
 
-static bool assert_strlcpy_result(StrlcpyArgs& args) {
+static bool assert_strlcpy_result(StrlcpyArgs &args) {
 	return (args.result == args.result_ref && strcmp(args.dst, args.dst_ref) == 0);
 }
 
-static void	test_strlcpy_std(const std::vector<std::string>& test_strings) {
+static void	test_strlcpy_std(const std::vector<std::string> &test_strings) {
 	char	dst[100];
 	char	dst_ref[100];
 

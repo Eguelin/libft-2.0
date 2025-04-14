@@ -6,7 +6,7 @@
 /*   By: eguelin <eguelin@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/14 15:28:33 by eguelin           #+#    #+#             */
-/*   Updated: 2025/04/13 17:48:17 by eguelin          ###   ########.fr       */
+/*   Updated: 2025/04/14 11:03:54 by eguelin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 #include <functional>
 #include <csignal>
 #include <vector>
+#include <map>
 #include <setjmp.h>
 extern "C" {
 	#include "libft.h"
@@ -37,16 +38,17 @@ void	catch_segfault();
 void	default_sigaction();
 void	run_test(const std::string& label, std::function<void()> test_func, std::function<bool()> assert_func, SegvExpectation expect_segv);
 
-void	test_strcat(std::vector<std::string> test_strings);
-void	test_strchr(std::vector<std::string> test_strings);
-void	test_strcmp(std::vector<std::string> test_strings);
-void	test_strcpy(std::vector<std::string> test_strings);
-void	test_strdup(std::vector<std::string> test_strings);
-void	test_strlcat(std::vector<std::string> test_strings);
-void	test_strlcpy(std::vector<std::string> test_strings);
-void	test_strlen(std::vector<std::string> test_strings);
-void	test_strncmp(std::vector<std::string> test_strings);
-void	test_strndup(std::vector<std::string> test_strings);
-void	test_strnstr();
+void	test_str(bool bigstr, const std::vector<std::string> &functests);
+void	test_strcat(const std::vector<std::string> &test_strings, bool bigstr);
+void	test_strchr(const std::vector<std::string> &test_strings, bool bigstr);
+void	test_strcmp(const std::vector<std::string> &test_strings, bool bigstr);
+void	test_strcpy(const std::vector<std::string> &test_strings, bool bigstr);
+void	test_strdup(const std::vector<std::string> &test_strings, bool bigstr);
+void	test_strlcat(const std::vector<std::string> &test_strings, bool bigstr);
+void	test_strlcpy(const std::vector<std::string> &test_strings, bool bigstr);
+void	test_strlen(const std::vector<std::string> &test_strings, bool bigstr);
+void	test_strncmp(const std::vector<std::string> &test_strings, bool bigstr);
+void	test_strndup(const std::vector<std::string> &test_strings, bool bigstr);
+void	test_strnstr(const std::vector<std::string> &test_strings, bool bigstr);
 
 #endif

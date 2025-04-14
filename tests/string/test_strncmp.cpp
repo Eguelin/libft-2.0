@@ -6,7 +6,7 @@
 /*   By: eguelin <eguelin@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/15 15:41:05 by eguelin           #+#    #+#             */
-/*   Updated: 2025/04/08 19:04:43 by eguelin          ###   ########.fr       */
+/*   Updated: 2025/04/14 10:39:24 by eguelin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,29 +19,30 @@ struct	StrncmpArgs {
 	int			result;
 };
 
-static void	test_strncmp_std(const std::vector<std::string>& test_strings);
+static void	test_strncmp_std(const std::vector<std::string> &test_strings);
 static void	test_strncmp_null();
 static void	test_strncmp_big();
 
-void	test_strncmp(std::vector<std::string> test_strings) {
+void	test_strncmp(const std::vector<std::string> &test_strings, bool bigstr) {
 	std::cout << "\033[1;34m" << "ft_strncmp" << "\033[0m" << std::endl;
 	std::cout << "======================" << std::endl;
 	test_strncmp_std(test_strings);
 	test_strncmp_null();
-	test_strncmp_big();
+	if (bigstr)
+		test_strncmp_big();
 }
 
-static void	test_strncmp_runner(StrncmpArgs& args) {
+static void	test_strncmp_runner(StrncmpArgs &args) {
 	args.result = ft_strncmp(args.s1, args.s2, args.n);
 }
 
-static bool assert_strncmp_result(StrncmpArgs& args) {
+static bool assert_strncmp_result(StrncmpArgs &args) {
 	return (args.result == 0 && !strncmp(args.s1, args.s2, args.n)) ||
 		(args.result < 0 && strncmp(args.s1, args.s2, args.n) < 0) ||
 		(args.result > 0 && strncmp(args.s1, args.s2, args.n) > 0);
 }
 
-static void	test_strncmp_std(const std::vector<std::string>& test_strings) {
+static void	test_strncmp_std(const std::vector<std::string> &test_strings) {
 
 	for (size_t i = 0; i < test_strings.size(); ++i) {
 

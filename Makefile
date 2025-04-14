@@ -6,7 +6,7 @@
 #    By: eguelin <eguelin@student.42lyon.fr>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/24 18:06:37 by eguelin           #+#    #+#              #
-#    Updated: 2025/04/12 17:09:01 by eguelin          ###   ########.fr        #
+#    Updated: 2025/04/14 11:13:27 by eguelin          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -121,19 +121,26 @@ OBJS_DIRS	= $(sort $(dir $(OBJS_FILES)))
 
 # ********************************   tests   ********************************* #
 
-TESTS_FILES	= test.cpp \
-			  test_utils.cpp \
-			  test_strcat.cpp \
-			  test_strchr.cpp \
-			  test_strcmp.cpp \
-			  test_strcpy.cpp \
-			  test_strdup.cpp \
-			  test_strlcat.cpp \
-			  test_strlcpy.cpp \
-			  test_strlen.cpp \
-			  test_strncmp.cpp \
-			  test_strndup.cpp \
-			  test_strnstr.cpp
+TESTS_FILES	= test.cpp
+
+TESTS_UTILS_FILES	= test_utils.cpp
+
+TESTS_FILES	+= $(addprefix $(UTILS_DIR), $(TESTS_UTILS_FILES))
+
+TESTS_STR_FILES	= test_str.cpp \
+				  test_strcat.cpp \
+				  test_strchr.cpp \
+				  test_strcmp.cpp \
+				  test_strcpy.cpp \
+				  test_strdup.cpp \
+				  test_strlcat.cpp \
+				  test_strlcpy.cpp \
+				  test_strlen.cpp \
+				  test_strncmp.cpp \
+				  test_strndup.cpp \
+				  test_strnstr.cpp
+
+TESTS_FILES	+= $(addprefix $(STR_DIR), $(TESTS_STR_FILES))
 
 OBJS_TESTS_FILES	= $(addprefix $(OBJS_DIR)$(TESTS_DIR), $(TESTS_FILES:.cpp=.o))
 
@@ -177,10 +184,10 @@ $(TESTS): all $(OBJS_TESTS_FILES)
 	$(PRINTF) $(TESTS_MSG)
 	./$(TESTS)
 
-$(OBJS_DIR)$(TESTS_DIR)%.o: $(TESTS_DIR)%.cpp | $(OBJS_DIR)$(TESTS_DIR)
+$(OBJS_DIR)$(TESTS_DIR)%.o: $(TESTS_DIR)%.cpp | $(OBJS_TESTS_DIRS)
 	$(CPP) $(CFLAGS) $(INCS_TESTS) -MMD -MP -c $<  -o $@
 
-$(OBJS_DIR)$(TESTS_DIR):
+$(OBJS_TESTS_DIRS):
 	mkdir -p $@
 
 clean_$(TESTS):

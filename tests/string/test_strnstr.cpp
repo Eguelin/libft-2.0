@@ -6,7 +6,7 @@
 /*   By: eguelin <eguelin@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/15 15:41:05 by eguelin           #+#    #+#             */
-/*   Updated: 2025/04/09 16:43:25 by eguelin          ###   ########.fr       */
+/*   Updated: 2025/04/14 10:40:29 by eguelin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,19 +19,20 @@ struct	StrnstrArgs {
 	char		*result;
 };
 
-static void	test_strnstr_std();
+static void	test_strnstr_std(const std::vector<std::string> &test_strings);
 static void	test_strnstr_null();
 static void	test_strnstr_big();
 
-void	test_strnstr() {
+void	test_strnstr(const std::vector<std::string> &test_strings, bool bigstr) {
 	std::cout << "\033[1;34m" << "ft_strnstr" << "\033[0m" << std::endl;
 	std::cout << "======================" << std::endl;
-	test_strnstr_std();
+	test_strnstr_std(test_strings);
 	test_strnstr_null();
-	test_strnstr_big();
+	if (bigstr)
+		test_strnstr_big();
 }
 
-static void	test_strnstr_runner(StrnstrArgs& args) {
+static void	test_strnstr_runner(StrnstrArgs &args) {
 	args.result = ft_strnstr(args.big, args.little, args.len);
 }
 
@@ -43,20 +44,11 @@ static char	*strnstr_ref(const char *big, const char *little, size_t len) {
 	return const_cast<char *>(big + pos);
 }
 
-static bool assert_strnstr_result(StrnstrArgs& args) {
+static bool assert_strnstr_result(StrnstrArgs &args) {
 	return (args.result == strnstr_ref(args.big, args.little, args.len));
 }
 
-static void	test_strnstr_std() {
-	std::vector<std::string> test_strings = {
-		"Hello, World!",
-		"lorem ipsum dolor sit amet",
-		"test",
-		"3 + 3 = 9",
-		"\211\212",
-		""
-	};
-
+static void	test_strnstr_std(const std::vector<std::string> &test_strings) {
 	std::vector<std::string> test_substrings = {
 		", Wor",
 		"sit",

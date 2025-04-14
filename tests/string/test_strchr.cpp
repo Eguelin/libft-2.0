@@ -6,7 +6,7 @@
 /*   By: eguelin <eguelin@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/15 15:41:05 by eguelin           #+#    #+#             */
-/*   Updated: 2025/04/08 12:09:26 by eguelin          ###   ########.fr       */
+/*   Updated: 2025/04/14 10:38:14 by eguelin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,27 +18,28 @@ struct	StrchrArgs {
 	const char	*src;
 };
 
-static void	test_strchr_std(const std::vector<std::string>& test_strings);
+static void	test_strchr_std(const std::vector<std::string> &test_strings);
 static void	test_strchr_null();
 static void	test_strchr_big();
 
-void	test_strchr(std::vector<std::string> test_strings) {
+void	test_strchr(const std::vector<std::string> &test_strings, bool bigstr) {
 	std::cout << "\033[1;34m" << "ft_strchr" << "\033[0m" << std::endl;
 	std::cout << "======================" << std::endl;
 	test_strchr_std(test_strings);
 	test_strchr_null();
-	test_strchr_big();
+	if (bigstr)
+		test_strchr_big();
 }
 
-static void	test_strchr_runner(StrchrArgs& args) {
+static void	test_strchr_runner(StrchrArgs &args) {
 	args.result = ft_strchr(args.src, args.c);
 }
 
-static bool assert_strchr_result(StrchrArgs& args) {
+static bool assert_strchr_result(StrchrArgs &args) {
 	return args.result == strchr(args.src, args.c);
 }
 
-static void	test_strchr_std(const std::vector<std::string>& test_strings) {
+static void	test_strchr_std(const std::vector<std::string> &test_strings) {
 	std::string	charset = "abcGHI012\212";
 
 	for (size_t i = 0; i < test_strings.size(); ++i) {
