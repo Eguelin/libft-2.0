@@ -6,7 +6,7 @@
 /*   By: eguelin <eguelin@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 19:44:13 by eguelin           #+#    #+#             */
-/*   Updated: 2025/04/14 13:54:39 by eguelin          ###   ########.fr       */
+/*   Updated: 2025/04/14 17:29:09 by eguelin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,5 +120,11 @@ char	*ft_strndup(const char *s, size_t n);
 	Returns a pointer to the beginning of the located substring, or NULL if the
 	substring is not found. */
 char	*ft_strnstr(const char *big, const char *little, size_t len);
+/*	Locates the last occurrence of c (converted to a char) in the string
+	pointed to by s.
+
+	Returns a pointer to the located character, or NULL if the character does
+	not appear in the string. */
+char	*ft_strrchr(const char *s, int c);
 
 #endif

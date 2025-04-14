@@ -6,7 +6,7 @@
 #    By: eguelin <eguelin@student.42lyon.fr>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/24 18:06:37 by eguelin           #+#    #+#              #
-#    Updated: 2025/04/14 14:07:24 by eguelin          ###   ########.fr        #
+#    Updated: 2025/04/14 17:31:59 by eguelin          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -113,7 +113,8 @@ STR_FILES	= ft_strcat.c \
 			  ft_strlen.c \
 			  ft_strncmp.c \
 			  ft_strndup.c \
-			  ft_strnstr.c
+			  ft_strnstr.c \
+			  ft_strrchr.c
 
 FILES 	+= $(addprefix $(STR_DIR), $(STR_FILES))
 
@@ -142,7 +143,8 @@ TESTS_STR_FILES	= test_str.cpp \
 				  test_strlen.cpp \
 				  test_strncmp.cpp \
 				  test_strndup.cpp \
-				  test_strnstr.cpp
+				  test_strnstr.cpp \
+				  test_strrchr.cpp
 
 TESTS_FILES	+= $(addprefix $(STR_DIR), $(TESTS_STR_FILES))
 
