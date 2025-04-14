@@ -6,7 +6,7 @@
 /*   By: eguelin <eguelin@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/29 19:34:11 by eguelin           #+#    #+#             */
-/*   Updated: 2025/03/05 18:32:57 by eguelin          ###   ########.fr       */
+/*   Updated: 2025/04/14 18:14:33 by eguelin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,5 @@
 
 int	ft_strcmp(const char *s1, const char *s2)
 {
-	size_t	i;
-
-	i = 0;
-	while (s1[i] && s1[i] == s2[i])
-		i++;
-	return ((unsigned char)s1[i] - (unsigned char)s2[i]);
+	return (ft_strncmp(s1, s2, LONG_MAX));
 }
