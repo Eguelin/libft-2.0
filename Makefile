@@ -6,7 +6,7 @@
 #    By: eguelin <eguelin@student.42lyon.fr>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/24 18:06:37 by eguelin           #+#    #+#              #
-#    Updated: 2025/04/14 11:13:27 by eguelin          ###   ########.fr        #
+#    Updated: 2025/04/14 14:07:24 by eguelin          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,6 +21,7 @@ OBJS_DIR	= .objs/
 SRCS_DIR	= srcs/
 INCS_DIR	= includes/
 UTILS_DIR	= utils/
+MEMORY_DIR	= memory/
 PRINT_DIR	= print/
 STR_DIR		= string/
 CC			= gcc
@@ -89,17 +90,20 @@ UTILS_FILES	= ft_flush_buff.c \
 			  ft_put_ulongb_buff.c \
 			  ft_write_pf.c
 
-ALL_FILES	= $(addprefix $(UTILS_DIR), $(UTILS_FILES))
+FILES	= $(addprefix $(UTILS_DIR), $(UTILS_FILES))
+
+MEMORY_FILES	= ft_bzero.c
+
+FILES	+= $(addprefix $(MEMORY_DIR), $(MEMORY_FILES))
 
 PRINT_FILES	= ft_dprintf.c \
 			  ft_printf.c \
 			  ft_snprintf.c \
 			  ft_sprintf.c
 
-ALL_FILES 	+= $(addprefix $(PRINT_DIR), $(PRINT_FILES))
+FILES 	+= $(addprefix $(PRINT_DIR), $(PRINT_FILES))
 
-STR_FILES	= ft_bzero.c \
-			  ft_strcat.c \
+STR_FILES	= ft_strcat.c \
 			  ft_strchr.c \
 			  ft_strcmp.c \
 			  ft_strcpy.c \
@@ -111,9 +115,9 @@ STR_FILES	= ft_bzero.c \
 			  ft_strndup.c \
 			  ft_strnstr.c
 
-ALL_FILES 	+= $(addprefix $(STR_DIR), $(STR_FILES))
+FILES 	+= $(addprefix $(STR_DIR), $(STR_FILES))
 
-OBJS_FILES	= $(addprefix $(OBJS_DIR), $(ALL_FILES:.c=.o))
+OBJS_FILES	= $(addprefix $(OBJS_DIR), $(FILES:.c=.o))
 
 DEP_FILES	= $(OBJS_FILES:.o=.d)
 

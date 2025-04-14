@@ -6,7 +6,7 @@
 /*   By: eguelin <eguelin@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 19:44:13 by eguelin           #+#    #+#             */
-/*   Updated: 2025/04/12 17:02:23 by eguelin          ###   ########.fr       */
+/*   Updated: 2025/04/14 13:54:39 by eguelin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,14 @@
 
 # include <unistd.h>
 # include <stdlib.h>
+
+/* ************************************************************************** */
+/*                              memory functions                              */
+/* ************************************************************************** */
+
+/*	Initializes the first n bytes of the block of memory pointed by s to
+	zero. */
+	void	ft_bzero(void *s, size_t n);
 
 /* ************************************************************************** */
 /*                              print functions                               */
@@ -45,9 +53,6 @@ int		ft_sprintf(char *str, const char *format, ...);
 /*                              string functions                              */
 /* ************************************************************************** */
 
-/*	Initializes the first n bytes of the block of memory pointed by s to
-	zero. */
-void	ft_bzero(void *s, size_t n);
 /*	Concatenates the string pointed to by src to the end of the string pointed
 	to by dst.
 
