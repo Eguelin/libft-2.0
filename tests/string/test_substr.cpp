@@ -6,7 +6,7 @@
 /*   By: eguelin <eguelin@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/15 15:41:05 by eguelin           #+#    #+#             */
-/*   Updated: 2025/04/16 15:01:12 by eguelin          ###   ########.fr       */
+/*   Updated: 2025/04/16 15:17:58 by eguelin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,8 +41,16 @@ static void	test_substr_runner(SubstrArgs &args) {
 }
 
 static bool assert_substr_result(SubstrArgs &args) {
+	std::string	result_ref;
+
+	try {
+		result_ref = std::string(args.src).substr(args.start, args.len);
+	}
+	catch (const std::out_of_range &e) {
+		result_ref = "";
+	}
 	return (args.result != nullptr && args.src != nullptr && args.result != args.src &&
-		strcmp(args.result, std::string(args.src).substr(args.start, args.len).c_str()) == 0);
+		strcmp(args.result, result_ref.c_str()) == 0);
 }
 
 static void	test_substr_std(const std::vector<std::string> &test_strings) {
@@ -65,7 +73,7 @@ static void	test_substr_std(const std::vector<std::string> &test_strings) {
 		free(args.result);
 	}
 
-	for (size_t i = 0; i < test_strings[0].size(); ++i) {
+	for (size_t i = 0; i < test_strings[0].size() + 3; ++i) {
 		for (size_t j = 0; j < test_strings[0].size(); ++j) {
 			SubstrArgs args{nullptr, static_cast<unsigned int>(i), j, test_strings[0].c_str()};
 			run_test("ft_substr(\"" + test_strings[0] + "\"" + ", " + std::to_string(i) + ", " + std::to_string(j) + ")",

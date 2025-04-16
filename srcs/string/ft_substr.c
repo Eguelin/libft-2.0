@@ -6,7 +6,7 @@
 /*   By: eguelin <eguelin@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/05 19:26:11 by eguelin           #+#    #+#             */
-/*   Updated: 2025/04/16 15:00:35 by eguelin          ###   ########.fr       */
+/*   Updated: 2025/04/16 15:17:47 by eguelin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ char	*ft_substr(const char *s, unsigned int start, size_t len)
 	if (!s)
 		return (NULL);
 	len_s = ft_strlen(s);
-	if (len_s < len)
+	if (len_s < start)
 		start = len_s;
 	s += start;
 	len_s -= start;
