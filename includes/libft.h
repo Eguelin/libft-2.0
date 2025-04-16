@@ -6,7 +6,7 @@
 /*   By: eguelin <eguelin@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 19:44:13 by eguelin           #+#    #+#             */
-/*   Updated: 2025/04/14 18:14:56 by eguelin          ###   ########.fr       */
+/*   Updated: 2025/04/16 14:53:53 by eguelin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,10 +81,12 @@ int		ft_strcmp(const char *s1, const char *s2);
 
 	Returns a pointer to the dstination string dst. */
 char	*ft_strcpy(char *dst, const char *src);
-/*	Duplicates the string s.
+/*	Allocates (with malloc(3)) and returns a string that is a duplicate of
+	the string s.
 
-	Returns a pointer to the duplicated string, or NULL if the allocation fails.
-	The returned string must be freed with free(3). */
+	The returned pointer must be freed with free(3).
+
+	Returns NULL if the allocation fails. */
 char	*ft_strdup(const char *s);
 /*	Concatenates the string pointed to by src to the end of the string pointed
 	to by dst, up to size - 1 characters.
@@ -133,5 +135,12 @@ char	*ft_strrchr(const char *s, int c);
 	Returns a pointer to the beginning of the located substring, or NULL if the
 	substring is not found. */
 char	*ft_strstr(const char *big, const char *little);
+/*	Allocates (with malloc(3)) and returns a substring from the string s.
+	The substring begins at index start and is of maximum size len.
+
+	The returned substring must be freed with free(3).
+
+	Returns the substring or NULL if the allocation fails. */
+char	*ft_substr(const char *s, unsigned int start, size_t len);
 
 #endif

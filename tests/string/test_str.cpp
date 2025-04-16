@@ -22,7 +22,8 @@ void	test_str(bool bigstr, const std::vector<std::string> &functests) {
 		{"strndup", test_strndup},
 		{"strnstr", test_strnstr},
 		{"strrchr", test_strrchr},
-		{"strstr", test_strstr}
+		{"strstr", test_strstr},
+		{"substr", test_substr}
 	};
 
 	std::cout << "\033[1;35m" << "String Functions" << "\033[0m" << std::endl;
